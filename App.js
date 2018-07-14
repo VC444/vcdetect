@@ -90,7 +90,7 @@ export default class App extends React.Component {
                 style={{
                   flex: 0.1,
                   alignItems: 'center',
-                  backgroundColor: 'blue',
+                  backgroundColor: '#73b79d',
                   height: '10%',
                 }}
                 onPress={this.objectDetection}
