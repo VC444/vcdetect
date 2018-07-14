@@ -43,17 +43,12 @@ export default class App extends React.Component {
     );
     return predictions;
   };
-
+  
   objectDetection = async () => {
     let photo = await this.capturePhoto();
     let resized = await this.resize(photo);
     let predictions = await this.predict(resized);
     this.setState({ predictions: predictions.outputs[0].data.concepts });
-    let names = [];
-
-    predictions.map(prediction => {
-      names = prediction.name;
-    })
   };
 
   render() {
