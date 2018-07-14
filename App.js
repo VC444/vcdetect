@@ -14,16 +14,19 @@ export default class App extends React.Component {
     hasCameraPermission: null,
     predictions: [],
   };
+
   async componentWillMount() {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
   }
+
   capturePhoto = async () => {
     if (this.camera) {
       let photo = await this.camera.takePictureAsync();
       return photo.uri;
     }
   };
+
   resize = async photo => {
     let manipulatedImage = await ImageManipulator.manipulate(
       photo,
@@ -32,6 +35,7 @@ export default class App extends React.Component {
     );
     return manipulatedImage.base64;
   };
+
   predict = async image => {
     let predictions = await clarifai.models.predict(
       Clarifai.GENERAL_MODEL,
@@ -39,6 +43,7 @@ export default class App extends React.Component {
     );
     return predictions;
   };
+  
   objectDetection = async () => {
     let photo = await this.capturePhoto();
     let resized = await this.resize(photo);
