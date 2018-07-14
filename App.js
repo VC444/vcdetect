@@ -1,5 +1,4 @@
 
-// code taken from https://docs.expo.io/versions/latest/sdk/camera
 import React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { Camera, Permissions } from 'expo';
